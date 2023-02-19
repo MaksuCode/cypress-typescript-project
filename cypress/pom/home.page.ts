@@ -1,8 +1,15 @@
-class HomePage{
+import { BasePage } from "./base.page";
+
+export class HomePage extends BasePage{
+
+    private readonly favButton = 'favorite-btn';
     
-    navigate(){
-        cy.visit('/');
+    visit(){
+        super.visit('/');
+    }
+
+    clickFavButton(){
+        cy.get(this.favButton).first().click();
     }
 }
 
-export default new HomePage();

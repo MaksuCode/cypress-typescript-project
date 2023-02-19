@@ -17,7 +17,5 @@ export class BasePage{
         .and('have.attr', 'href', link)
     }
 
-
-
 }
 

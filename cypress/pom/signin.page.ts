@@ -2,6 +2,7 @@ import { BasePage } from "./base.page";
 
 export class SignInPage extends BasePage{
 
+    private readonly title = '.text-xs-center.ng-binding';
     private readonly registerLink = 'p.text-xs-center > [ui-sref="app.register"]';
     private readonly email = ':nth-child(2) > .form-control';
     private readonly password = ':nth-child(3) > .form-control';
@@ -17,6 +18,10 @@ export class SignInPage extends BasePage{
       this.fillEmail(email);
       this.fillPassword(password);
       this.clickSignInButton();
+    }
+
+    checkTitle(text : string){
+      cy.get(this.title).should('have.text', text);
     }
 
     clickRegisterLink(){

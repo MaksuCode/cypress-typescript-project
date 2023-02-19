@@ -43,9 +43,23 @@ describe('Given user is on Sign In page', () => {
 
   it('should redirect to Sign Up page when register link is clicked', () => {
     signInPage.clickRegisterLink();
-
   })
 
+  it('should show \'email can\'t be blank\' error message when email is left blank ', () => {
+    signInPage
+    .fillPassword('test_password')
+    .clickSignInButton()
+    .checkErrorMessage('email can\'t be blank')
+  })
+
+  it('should show \'password can\'t be blank\' error message when password is left blank ', () => {
+    signInPage
+    .fillEmail('test@gmail.com')
+    .clickSignInButton()
+    .checkErrorMessage('password can\'t be blank')
+  })
+
+  // I need to find a way to validate the string on a tooltip. Currently I could not do it.
   it.skip('should show an error message when email format is wrong', () => {
     signInPage
     .fillEmail('incorrect_format_emailgmail.com')
