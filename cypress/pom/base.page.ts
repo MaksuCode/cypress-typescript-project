@@ -1,7 +1,19 @@
+import { NavBar } from "./nav.bar";
+
 export class BasePage{
+
+    protected readonly navBar: NavBar;
+
+    constructor(){
+        this.navBar = new NavBar();
+    }
 
     visit(url : string){
         cy.visit(url);
+    }
+
+    navigationBar(){
+        return this.navBar;
     }
 
     checkPlaceHolderValue(locator : string, value : string){
