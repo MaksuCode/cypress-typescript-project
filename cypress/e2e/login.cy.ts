@@ -41,6 +41,4 @@ describe('Given user is on login page', () => {
 
   })
 
-
-
 })

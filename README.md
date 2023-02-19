@@ -15,7 +15,7 @@ npm install typescript
 
 ## Usage
 
-Run following command to run the tests usin CLI.
+Run following command to run the tests usin CLI
 
 ```cmd
 
@@ -23,7 +23,7 @@ npm run cy:run
 
 ```
 
-Or you can open Cypress UI by
+Or you can open Cypress UI and run the test manually
 
 ```cmd
 
