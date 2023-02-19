@@ -1,4 +1,4 @@
-class SignInPage {
+export class SignInPage {
 
     private readonly registerLink = 'p.text-xs-center > [ui-sref="app.register"]';
     private readonly email = ':nth-child(2) > .form-control';
@@ -21,6 +21,17 @@ class SignInPage {
       .and('contain.text', 'Need an account?')
       .and('have.attr', 'href', '#!/register')
     }
+
+    checkEmailPlaceholder() {
+      cy.get(this.email)
+      .should('have.attr', 'placeholder')
+      .and('eq', 'Email');
+    }
+
+    checkPaswordPlaceholder() {
+      cy.get(this.password)
+      .should('have.attr', 'placeholder')
+      .and('eq', 'Password');    }
   
     fillEmail(email: string) {
       cy.get(this.email).type(email);

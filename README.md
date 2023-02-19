@@ -1,12 +1,15 @@
 
 # Simple UI Automation with Cypress with Typescript
 
-This is a sample project to practice Cypress with Typescript. It consists of 3 test cases for [this](https://practicetestautomation.com/practice-test-login/) simple login page
+This is a sample project to practice UI test automation using Cypress and Typescript.
 
 
 ## Installation
 
-Use npm 
+The web project under test is [this](https://github.com/gothinkster/angularjs-realworld-example-app) one. Please follow the instructions on their github page
+and build up the project on your local.
+
+Then install Cypress and Typescipt using npm
 
 ```bash
 npm install cypress

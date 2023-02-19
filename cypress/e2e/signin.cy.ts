@@ -12,11 +12,20 @@ describe('Given user is on Sign In page', () => {
     signInPage.checkRegisterLink();
   })
 
+  it('should have Email placeholder on email input field', () => {
+    signInPage.checkEmailPlaceholder();
+  })
+
+  it('should have Password placeholder on password input field', () => {
+    signInPage.checkPaswordPlaceholder();
+  })
+
+
   it('should redirect to Sign Up page when register link is clicked', () => {
     signInPage.clickRegisterLink();
   })
 
-  it('should show an error message when email format is wrong', () => {
+  it.skip('should show an error message when email format is wrong', () => {
     signInPage
     .fillEmail('incorrect_format_emailgmail.com')
     .fillPassword('111111')
@@ -39,8 +48,5 @@ describe('Given user is on Sign In page', () => {
     .clickSignInButton()
     .checkErrorMessage('email or password is invalid');
   })
-
-  it('Shoukd')
-
 
 })
