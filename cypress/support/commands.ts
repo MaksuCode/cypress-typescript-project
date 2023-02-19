@@ -43,7 +43,25 @@ declare namespace Cypress {
   }
 
   // This method can be used before test cases to bypass authentication
-  Cypress.Commands.add('login', (email : string, password: string) => {
-    console.log('Email : ' + email);
-    console.log('Password : ' + password);
-  })
+  Cypress.Commands.add('login', (email, password) => {
+    console.log('Logging in via API call...')
+    cy.request({
+      method: 'POST',
+      url: 'https://api.realworld.io/api/users/login',
+      headers: {
+        'accept': 'application/json, text/plain, */*',
+        'content-type': 'application/json;charset=UTF-8'
+      },
+      body: {
+        user: {
+          email: email,
+          password: password
+        }
+      }
+    }).then((response) => {
+      window.localStorage.setItem('jwtToken', response.body.user.token);
+      console.log('jwtToken set : ' + response.body.user.token);
+    });
+    cy.reload();
+  });
+  
