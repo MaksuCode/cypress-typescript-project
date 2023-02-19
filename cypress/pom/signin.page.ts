@@ -1,4 +1,6 @@
-export class SignInPage {
+import { BasePage } from "./base.page";
+
+export class SignInPage extends BasePage{
 
     private readonly registerLink = 'p.text-xs-center > [ui-sref="app.register"]';
     private readonly email = ':nth-child(2) > .form-control';
@@ -7,31 +9,31 @@ export class SignInPage {
     private readonly errorMessage = 'div.ng-scope > .ng-binding';
   
     visit() {
-      cy.visit('/login');
+      super.visit('/login');
       return this;
+    }
+
+    login(email: string, password: string) {
+      this.fillEmail(email);
+      this.fillPassword(password);
+      this.clickSignInButton();
     }
 
     clickRegisterLink(){
       cy.get(this.registerLink).click();
     }
 
-    checkRegisterLink(){
-      cy.get(this.registerLink)
-      .should('be.visible')
-      .and('contain.text', 'Need an account?')
-      .and('have.attr', 'href', '#!/register')
+    checkRegisterLink(text : string, link : string){
+      super.checkHrefLink(this.registerLink, text, link);
     }
 
-    checkEmailPlaceholder() {
-      cy.get(this.email)
-      .should('have.attr', 'placeholder')
-      .and('eq', 'Email');
+    checkEmailPlaceholder(placeholder : string) {
+      super.checkPlaceHolderValue(this.email, placeholder);
     }
 
-    checkPaswordPlaceholder() {
-      cy.get(this.password)
-      .should('have.attr', 'placeholder')
-      .and('eq', 'Password');    }
+    checkPaswordPlaceholder(placeholder : string) {
+      super.checkPlaceHolderValue(this.password, placeholder);
+    }
   
     fillEmail(email: string) {
       cy.get(this.email).type(email);
@@ -54,13 +56,7 @@ export class SignInPage {
       .and('contain.text', message);
       return this;
     }
-  
-    login(email: string, password: string) {
-      this.fillEmail(email);
-      this.fillPassword(password);
-      this.clickSignInButton();
-    }
+
   }
   
-  export default new SignInPage();
   
