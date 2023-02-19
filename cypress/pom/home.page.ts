@@ -11,6 +11,12 @@ export class HomePage extends BasePage{
 
     clickFavButton(){
         cy.get(this.favButton).first().click();
+        return this;
+    }
+
+    checkFavCountIncrement(count : string){
+        cy.get(this.favButtonCount).first().should('contain.text', count);
+        return this;
     }
 
     

@@ -20,9 +20,11 @@ describe('Given user is on home page', () => {
         cy.window().then((win) => {
             const authToken = win.localStorage.getItem('jwtToken');
             cy.deleteFav('Try-to-transmit-the-HTTP-card-maybe-it-will-override-the-multi-byte-hard-drive!-120863', authToken || '');
-
           });
-        homePage.clickFavButton();
+          
+        homePage
+        .clickFavButton()
+        .checkFavCountIncrement('514');
     })
 
 
