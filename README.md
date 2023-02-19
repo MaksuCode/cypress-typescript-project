@@ -6,10 +6,11 @@ This is a sample project to practice Cypress with Typescript. It consists of 3 t
 
 ## Installation
 
-User npm 
+Use npm 
 
 ```bash
-pip install foobar
+npm install cypress
+npm install typescript
 ```
 
 ## Usage
