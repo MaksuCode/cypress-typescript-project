@@ -1,0 +1,19 @@
+{
+  "name": "cyress-typescript-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./cypress/support/index.js",
+  "scripts": {
+    "build": "tsc",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "start": "npm run build && serve -s dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.6.0",
+    "typescript": "^4.9.5"
+  }
+}
