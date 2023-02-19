@@ -3,6 +3,7 @@ import { BasePage } from "./base.page";
 export class HomePage extends BasePage{
 
     private readonly favButton = 'favorite-btn';
+    private readonly favButtonCount = 'favorite-btn ng-transclude';
     
     visit(){
         super.visit('/');
@@ -11,5 +12,7 @@ export class HomePage extends BasePage{
     clickFavButton(){
         cy.get(this.favButton).first().click();
     }
+
+    
 }
 

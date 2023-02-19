@@ -15,9 +15,14 @@ describe('Given user is on home page', () => {
 
 
     it('should increase the fav count on the post when a logged in user click fav button', () => {
-
         cy.login('mustafaksu4@gmail.com', '123456');
+        
+        cy.window().then((win) => {
+            const authToken = win.localStorage.getItem('jwtToken');
+            cy.deleteFav('Try-to-transmit-the-HTTP-card-maybe-it-will-override-the-multi-byte-hard-drive!-120863', authToken || '');
 
+          });
+        homePage.clickFavButton();
     })
 
 

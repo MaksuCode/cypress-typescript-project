@@ -39,6 +39,7 @@
 declare namespace Cypress {
     interface Chainable {
       login(email:string, pasword:string): void
+      deleteFav(articleSlug:string, authToken:string) : void
     }
   }
 
@@ -64,4 +65,18 @@ declare namespace Cypress {
     });
     cy.reload();
   });
+
+
+  Cypress.Commands.add('deleteFav', (articleSlug, authToken) => {
+    cy.request({
+      method: 'DELETE',
+      url: `https://api.realworld.io/api/articles/${articleSlug}/favorite`,
+      headers: {
+        'accept': 'application/json, text/plain, */*',
+        'authorization': `Token ${authToken}`
+      },
+      body: {}
+    });
+  });
+  
   
