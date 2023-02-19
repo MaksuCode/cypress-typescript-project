@@ -8,6 +8,11 @@ describe('Given user is on Sign In page', () => {
     signInPage.visit();
   })
 
+  it('should successfuly login with valid credentials', () => {
+    signInPage.login('mustafaksu4@gmail.com', '123456');
+    // Add assertion here
+  })
+
   it('should show \'Need and account?\' text', () => {
     signInPage.checkRegisterLink();
   })
