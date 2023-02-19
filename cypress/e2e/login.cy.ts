@@ -17,7 +17,8 @@ describe('Given user is on login page', () => {
 
     homePage
     .validateUrl()
-    .validateMessage();
+    .validateMessage()
+    .checkLogOutButton();
 
   })
 
