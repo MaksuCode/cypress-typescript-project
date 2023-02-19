@@ -2,8 +2,12 @@ class HomePage{
 
     private readonly logOutButton = '.wp-block-button__link';
 
+    navigate(){
+        cy.visit('/');
+    }
+
     validateUrl(){
-        cy.url().should('include', 'practicetestautomation.com/logged-in-successfully/');
+        cy.url().should('include', Cypress.env('URL'));
         return this;
     }
 
