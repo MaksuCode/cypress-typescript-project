@@ -1,5 +1,5 @@
 
-# Simple UI Automation with Cypress with Typescript
+# Simple UI Automation with Cypress using Typescript
 
 This is a sample project to practice UI test automation using Cypress and Typescript.
 
@@ -18,15 +18,15 @@ npm install typescript
 
 ## Usage
 
-Run following command to run the tests usin CLI
+Run following command to run the tests using CLI
 
 ```cmd
 
-npm run cy:run
+npx cypress run
 
 ```
 
-Or you can open Cypress UI and run the test manually
+Or you can open Cypress UI and run the tests manually
 
 ```cmd
 
