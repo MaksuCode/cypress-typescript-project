@@ -16,6 +16,8 @@ jobs:
       - run: 
           name: Run tests on ${{ parameters.browser }} browser
           command: npx cypress run --browser ${{ parameters.browser }}
+          environment:
+            browser: ${{ parameters.browser }}
           when: always
 
 workflows:
