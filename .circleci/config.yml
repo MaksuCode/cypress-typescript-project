@@ -4,7 +4,7 @@ version: 2.1
 parameters:
   browser:
     type: string
-    default: chrome
+    default: "chrome"
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npx cypress run --browser $parameters.browser
+      - run: npx cypress run --browser ${{ parameters.browser }}
 
 workflows:
   version: 2
