@@ -7,10 +7,17 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npx cypress run
+      - run: |
+          if [ "$BROWSER" = "chrome" ]; then
+            npx cypress run --browser chrome
+          else
+            npx cypress run
+          fi
 
 workflows:
   version: 2
   build:
     jobs:
-      - build
+      - build:
+          environment:
+            BROWSER: $BROWSER
