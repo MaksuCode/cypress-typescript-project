@@ -1,3 +1,6 @@
+version: 2.1
+
+
 jobs:
   manual-job:
     type: approval
@@ -12,3 +15,12 @@ jobs:
         default: "chrome"
     steps:
       - run: echo "Deploying to $ENVIRONMENT and running tests on $BROWSER"
+          
+workflows:
+  build:
+    jobs:
+      - build
+      - test
+
+
+
