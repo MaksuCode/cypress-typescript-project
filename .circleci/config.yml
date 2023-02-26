@@ -8,9 +8,13 @@ jobs:
       environment:
         type: string
         description: "The environment to run tests in"
+        default: ""
+        required: true
       browser:
         type: string
         description: "The browser to run tests in"
+        default: ""
+        required: true
     steps:
       - checkout
       - run: npm install
