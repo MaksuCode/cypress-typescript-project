@@ -1,31 +1,35 @@
 version: 2.1
 
 jobs:
-  manual_job:
-    docker:
-      - image: cypress/included:12.6.0
+  build:
     parameters:
       environment:
-        type: string
+        type: enum
+        values:
+          - staging
+          - production
+        default: staging
         description: "The environment to run tests in"
-        default: ""
-        required: true
       browser:
-        type: string
+        type: enum
+        values:
+          - chrome
+          - firefox
+        default: chrome
         description: "The browser to run tests in"
-        default: ""
-        required: true
+    docker:
+      - image: cypress/included:12.6.0
     steps:
       - checkout
       - run: npm install
       - run:
           name: Run tests on ${{ parameters.browser }} browser
-          command: npx cypress run --browser ${{ parameters.browser }}
+          command: npx cypress run --browser ${{ parameters.browser }} --env environment=${{ parameters.environment }}
           environment:
             browser: ${{ parameters.browser }}
-    
+          when: always
+          
 workflows:
   build:
     jobs:
-      - manual_job
-
+      - build
