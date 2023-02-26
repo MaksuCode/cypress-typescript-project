@@ -1,29 +1,31 @@
 version: 2.1
 
-
-parameters:
-  browser:
-    type: string
-    default: "chrome"
-
 jobs:
   build:
     docker:
       - image: cypress/included:12.6.0
+    parameters:
+      environment:
+        type: string
+        default: staging
+        description: "The environment to run tests in"
+      browser:
+        type: string
+        default: chrome
+        description: "The browser to run tests in"
     steps:
       - checkout
       - run: npm install
-      - run: 
+      - run:
           name: Run tests on ${{ parameters.browser }} browser
           command: npx cypress run --browser ${{ parameters.browser }}
           environment:
             browser: ${{ parameters.browser }}
           when: always
-
 workflows:
-  version: 2
   build:
     jobs:
-     - build
-
-
+      - build:
+          filters:
+            branches:
+              only: main
