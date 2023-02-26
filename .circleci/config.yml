@@ -13,9 +13,10 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npx cypress run --browser $browser
-        environment:
-          browser: ${{ parameters.browser }}
+      - run: 
+          name: Run tests on ${{ parameters.browser }} browser
+          command: npx cypress run --browser ${{ parameters.browser }}
+          when: always
 
 workflows:
   version: 2
