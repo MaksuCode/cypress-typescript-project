@@ -1,25 +1,52 @@
-version: 2.1
-
-
 jobs:
-  manual-job:
-    type: approval
+  build:
+    docker:
+      - image: cypress/included:12.6.0
     parameters:
       environment:
-        description: "Environment to deploy to"
         type: string
-        default: "staging"
+        default: staging
+        description: "The environment to run tests in"
       browser:
-        description: "Browser to run tests on"
         type: string
-        default: "chrome"
+        default: chrome
+        description: "The browser to run tests in"
     steps:
-      - run: echo "Deploying to $ENVIRONMENT and running tests on $BROWSER"
-          
+      - checkout
+      - run: npm install
+      - run:
+          name: Run tests on ${{ parameters.browser }} browser
+          command: npx cypress run --browser ${{ parameters.browser }}
+          environment:
+            browser: ${{ parameters.browser }}
+          when: always
+
+  manual_job:
+    description: "Manually triggered job for additional testing"
+    parameters:
+      environment:
+        type: string
+        default: staging
+        description: "The environment to run tests in"
+      browser:
+        type: string
+        default: chrome
+        description: "The browser to run tests in"
+    steps:
+      - checkout
+      - run: npm install
+      - run:
+          name: Run tests on ${{ parameters.browser }} browser
+          command: npx cypress run --browser ${{ parameters.browser }}
+          environment:
+            browser: ${{ parameters.browser }}
+          when: always
+    when: manual
+
 workflows:
   build:
     jobs:
       - build
-
-
-
+      - manual_job:
+          requires:
+            - build
