@@ -1,5 +1,11 @@
 version: 2.1
 
+
+parameters:
+  browser:
+    type: string
+    default: chrome
+
 jobs:
   build:
     docker:
@@ -7,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npx cypress run --browser $BROWSER
+      - run: npx cypress run --browser $parameters.browser
 
 workflows:
   version: 2
