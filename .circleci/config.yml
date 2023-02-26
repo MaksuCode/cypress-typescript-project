@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  manual_job:
     docker:
       - image: cypress/included:12.6.0
     parameters:
@@ -21,34 +21,9 @@ jobs:
           command: npx cypress run --browser ${{ parameters.browser }}
           environment:
             browser: ${{ parameters.browser }}
-          when: always
-
-  manual_job:
-    description: "Manually triggered job for additional testing"
-    parameters:
-      environment:
-        type: string
-        default: staging
-        description: "The environment to run tests in"
-      browser:
-        type: string
-        default: chrome
-        description: "The browser to run tests in"
-    steps:
-      - checkout
-      - run: npm install
-      - run:
-          name: Run tests on ${{ parameters.browser }} browser
-          command: npx cypress run --browser ${{ parameters.browser }}
-          environment:
-            browser: ${{ parameters.browser }}
-          when: always
-    when: manual
-
+    
 workflows:
   build:
     jobs:
-      - build
-      - manual_job:
-          requires:
-            - build
+      - manual_job
+
