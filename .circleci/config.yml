@@ -5,16 +5,10 @@ jobs:
     parameters:
       environment:
         type: enum
-        values:
-          - staging
-          - production
         default: staging
         description: "The environment to run tests in"
       browser:
         type: enum
-        values:
-          - chrome
-          - firefox
         default: chrome
         description: "The browser to run tests in"
     docker:
