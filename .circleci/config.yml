@@ -14,9 +14,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-          name: Install modules
       - run: npx cypress run --browser ${BROWSER}
-          name: Run tests on ${BROWSER}
 workflows:
   build:
     jobs:
