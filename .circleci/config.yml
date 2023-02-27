@@ -9,13 +9,18 @@ jobs:
   build:
     docker:
       - image: cypress/included:12.6.0
-    environment:
-      BROWSER: << pipeline.parameters.browser >>  
     steps:
       - checkout
       - run: npm install
+    test:
+     environment:
+      BROWSER: << pipeline.parameters.browser >>  
+    steps:
       - run: npx cypress run --browser ${BROWSER}
+
+
 workflows:
   build:
     jobs:
       - build
+      - test

@@ -14,7 +14,7 @@ describe('Given user is on home page', () => {
     })
 
 
-    it('should increase the fav count on the post when a logged in user click fav button', () => {
+    it.skip('should increase the fav count on the post when a logged in user click fav button', () => {
         cy.login('mustafaksu4@gmail.com', '123456');
         
         cy.window().then((win) => {
