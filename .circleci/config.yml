@@ -13,6 +13,8 @@ jobs:
       - checkout
       - run: npm install
   test:
+    executor:
+      name: docker/default
     environment:
       BROWSER: << pipeline.parameters.browser >>  
     steps:
