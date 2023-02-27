@@ -6,23 +6,16 @@ parameters:
     default: "chrome"
 
 jobs:
-  build:
-    docker:
-      - image: cypress/included:12.6.0
-    steps:
-      - checkout
-      - run: npm install
   test:
     docker:
-       - image: cypress/included:12.6.0
+      - image: cypress/included:12.6.0
     environment:
       BROWSER: << pipeline.parameters.browser >>  
     steps:
+      - checkout
+      - run: npm install
       - run: npx cypress run --browser ${BROWSER}
-
-
 workflows:
   build:
     jobs:
-      - build
       - test
