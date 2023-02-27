@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - run: npm install
-    test:
-     environment:
+  test:
+    environment:
       BROWSER: << pipeline.parameters.browser >>  
     steps:
       - run: npx cypress run --browser ${BROWSER}
