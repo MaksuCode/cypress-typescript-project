@@ -30,7 +30,7 @@ describe('Given user is on Sign In page', () => {
    })
 
   it('should show \'Need and account?\' text', () => {
-    signInPage.checkRegisterLink('Need an account?', '#!/register');
+    signInPage.checkRegisterLink('Need an account?', '#/register');
   })
 
   it('should have Email placeholder on email input field', () => {
