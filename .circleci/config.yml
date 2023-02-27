@@ -10,7 +10,7 @@ jobs:
     docker:
       - image: cypress/included:12.6.0
     environment:
-      BROWSER: << pipeline.parameters.image-tag >>  
+      BROWSER: << pipeline.parameters.browser >>  
     steps:
       - checkout
       - run: npm install
