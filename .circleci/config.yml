@@ -7,14 +7,14 @@ parameters:
 
 jobs:
   build:
-      docker:
+    docker:
       - image: cypress/included:12.6.0
     steps:
       - checkout
       - run: npm install
   test:
     docker:
-      - image: cypress/included:12.6.0
+       - image: cypress/included:12.6.0
     environment:
       BROWSER: << pipeline.parameters.browser >>  
     steps:
