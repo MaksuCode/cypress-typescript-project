@@ -8,6 +8,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl : 'https://demo.realworld.io/#/'
+    baseUrl : 'https://demo.realworld.io/#/',
+    projectId : "87vsbh"
   },
 });

@@ -1,23 +1,12 @@
 version: 2.1
-
-parameters:
-  browser:
-    type: string
-    default: "chrome"
-
-jobs:
-  test:
-    docker:
-      - image: cypress/included:12.6.0
-    environment:
-      BROWSER: << pipeline.parameters.browser >>  
-    steps:
-      - checkout
-      - run: npm install
-      - run: npx cypress run --browser ${BROWSER}
-      - store_test_results:
-          path: test-results
+orbs:
+  # "cypress-io/cypress@3" installs the latest published
+  # version "s.x.y" of the orb. We recommend you then use
+  # the strict explicit version "cypress-io/cypress@3.x.y"
+  # to lock the version and prevent unexpected CI changes
+  cypress: cypress-io/cypress@12
 workflows:
   build:
     jobs:
-      - test
+      - cypress/run # "run" job comes from "cypress" orb
+          start-command: 'npx cypress run --record --key 86dea7c8-962a-4a0f-81a4-bf1fba00fad2'
