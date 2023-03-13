@@ -8,5 +8,5 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run # "run" job comes from "cypress" orb
-          start-command: 'npx cypress run --record --key 86dea7c8-962a-4a0f-81a4-bf1fba00fad2'
+    - cypress/run: # "run" job comes from "cypress" orb
+        start-command: 'npx cypress run --record --key 86dea7c8-962a-4a0f-81a4-bf1fba00fad2'
